@@ -4,29 +4,34 @@
 #
 Name     : pidgin-sipe
 Version  : 1.23.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/tieto/sipe/archive/1.23.0.tar.gz
 Source0  : https://github.com/tieto/sipe/archive/1.23.0.tar.gz
 Summary  : Pidgin protocol plugin to connect to MS Office Communicator
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
 Requires: pidgin-sipe-lib
-Requires: pidgin-sipe-bin
 Requires: pidgin-sipe-data
 Requires: pidgin-sipe-locales
+BuildRequires : e2fsprogs-dev
+BuildRequires : farstream-dev
 BuildRequires : gettext
 BuildRequires : intltool
 BuildRequires : intltool-dev
+BuildRequires : krb5-dev
+BuildRequires : libnice-dev
 BuildRequires : perl(XML::Parser)
 BuildRequires : pidgin-dev
 BuildRequires : pkgconfig(dbus-1)
+BuildRequires : pkgconfig(dbus-glib-1)
 BuildRequires : pkgconfig(glib-2.0)
 BuildRequires : pkgconfig(gmime-3.0)
 BuildRequires : pkgconfig(gmodule-2.0)
+BuildRequires : pkgconfig(gstreamer-1.0)
+BuildRequires : pkgconfig(gstreamer-rtp-1.0)
 BuildRequires : pkgconfig(libcrypto)
 BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(nss)
-BuildRequires : pkgconfig(telepathy-glib)
 BuildRequires : pkgconfig(valgrind)
 
 %description
@@ -44,15 +49,6 @@ With this plugin you should be able to replace your Microsoft Office
 Communicator client with Pidgin.
 
 This package provides the icon set for Pidgin.
-
-%package bin
-Summary: bin components for the pidgin-sipe package.
-Group: Binaries
-Requires: pidgin-sipe-data
-
-%description bin
-bin components for the pidgin-sipe package.
-
 
 %package data
 Summary: data components for the pidgin-sipe package.
@@ -87,8 +83,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1512080803
-%autogen --disable-static --enable-purple=false
+export SOURCE_DATE_EPOCH=1513024202
+%autogen --disable-static --disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
 make V=1  %{?_smp_mflags}
 
 %check
@@ -99,7 +95,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1512080803
+export SOURCE_DATE_EPOCH=1513024202
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin-sipe
@@ -107,27 +103,15 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 
-%files bin
-%defattr(-,root,root,-)
-/usr/libexec/telepathy-sipe
-
 %files data
 %defattr(-,root,root,-)
 /usr/share/appdata/pidgin-sipe.metainfo.xml
-/usr/share/dbus-1/services/org.freedesktop.Telepathy.ConnectionManager.sipe.service
-/usr/share/empathy/icons/hicolor/16x16/apps/im-sipe.png
-/usr/share/empathy/icons/hicolor/22x22/apps/im-sipe.png
-/usr/share/empathy/icons/hicolor/24x24/apps/im-sipe.png
-/usr/share/empathy/icons/hicolor/32x32/apps/im-sipe.png
-/usr/share/empathy/icons/hicolor/48x48/apps/im-sipe.png
-/usr/share/empathy/icons/hicolor/scalable/apps/im-sipe.svg
 /usr/share/pixmaps/pidgin/protocols/16/sipe.png
 /usr/share/pixmaps/pidgin/protocols/22/sipe.png
 /usr/share/pixmaps/pidgin/protocols/24/sipe.png
 /usr/share/pixmaps/pidgin/protocols/32/sipe.png
 /usr/share/pixmaps/pidgin/protocols/48/sipe.png
 /usr/share/pixmaps/pidgin/protocols/scalable/sipe.svg
-/usr/share/telepathy/profiles/sipe.profile
 
 %files lib
 %defattr(-,root,root,-)

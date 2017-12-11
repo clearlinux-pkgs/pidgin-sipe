@@ -2,3 +2,7 @@
 # picked up automatically. One name per line, no whitespace.
 pidgin-dev
 intltool-dev
+libnice-dev
+krb5-dev
+e2fsprogs-dev
+farstream-dev

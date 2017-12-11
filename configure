@@ -1,1 +1,1 @@
---enable-purple=false
+--disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
