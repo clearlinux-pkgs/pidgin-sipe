@@ -7,3 +7,4 @@ intltool-dev
 krb5-dev
 libnice-dev
 pidgin-dev
+gettext-dev

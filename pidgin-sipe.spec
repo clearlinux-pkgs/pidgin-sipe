@@ -4,7 +4,7 @@
 #
 Name     : pidgin-sipe
 Version  : 1.23.1
-Release  : 6
+Release  : 7
 URL      : https://github.com/tieto/sipe/archive/1.23.1.tar.gz
 Source0  : https://github.com/tieto/sipe/archive/1.23.1.tar.gz
 Summary  : Pidgin protocol plugin to connect to MS Office Communicator
@@ -17,6 +17,7 @@ BuildRequires : FreeRDP-dev
 BuildRequires : e2fsprogs-dev
 BuildRequires : farstream-dev
 BuildRequires : gettext
+BuildRequires : gettext-dev
 BuildRequires : intltool
 BuildRequires : intltool-dev
 BuildRequires : krb5-dev
@@ -84,7 +85,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1522763210
+export SOURCE_DATE_EPOCH=1522779599
 %autogen --disable-static --disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
 make  %{?_smp_mflags}
 
@@ -96,7 +97,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1522763210
+export SOURCE_DATE_EPOCH=1522779599
 rm -rf %{buildroot}
 %make_install
 %find_lang pidgin-sipe
