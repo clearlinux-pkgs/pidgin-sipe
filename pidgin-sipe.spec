@@ -4,7 +4,7 @@
 #
 Name     : pidgin-sipe
 Version  : 1.23.3
-Release  : 12
+Release  : 13
 URL      : https://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.23.3/pidgin-sipe-1.23.3.tar.bz2
 Source0  : https://downloads.sourceforge.net/project/sipe/sipe/pidgin-sipe-1.23.3/pidgin-sipe-1.23.3.tar.bz2
 Summary  : Pidgin protocol plugin to connect to MS Office Communicator
@@ -96,7 +96,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536260396
+export SOURCE_DATE_EPOCH=1536778202
 %reconfigure --disable-static --disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
 make  %{?_smp_mflags}
 
@@ -108,7 +108,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1536260396
+export SOURCE_DATE_EPOCH=1536778202
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/pidgin-sipe
 cp COPYING %{buildroot}/usr/share/doc/pidgin-sipe/COPYING
