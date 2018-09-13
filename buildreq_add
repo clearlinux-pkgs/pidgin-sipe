@@ -1,11 +1,11 @@
 # This file contains additional build requirements that did not get
 # picked up automatically. One name per line, no whitespace.
-FreeRDP-dev
-Remmina-dev
 e2fsprogs-dev
 farstream-dev
-gettext-dev
+gst-plugins-base
 intltool-dev
 krb5-dev
 libnice-dev
+libtool
+openssl
 pidgin-dev
