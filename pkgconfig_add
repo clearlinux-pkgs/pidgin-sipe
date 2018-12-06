@@ -1,5 +1,7 @@
 # This file contains additional pkgconfig build requirements that did
 # not get picked up automatically. One name per line, no whitespace.
+freerdp-shadow2
 gstreamer-rtp-1.0
 gstreamer-1.0
 dbus-glib-1
+winpr2
