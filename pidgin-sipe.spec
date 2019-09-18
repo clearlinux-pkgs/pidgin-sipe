@@ -4,7 +4,7 @@
 #
 Name     : pidgin-sipe
 Version  : 1.24.0
-Release  : 20
+Release  : 21
 URL      : https://github.com/tieto/sipe/archive/1.24.0.tar.gz
 Source0  : https://github.com/tieto/sipe/archive/1.24.0.tar.gz
 Summary  : Pidgin protocol plugin to connect to MS Office Communicator
@@ -99,20 +99,28 @@ locales components for the pidgin-sipe package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1544202230
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1568768373
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %autogen --disable-static --disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1544202230
+export SOURCE_DATE_EPOCH=1568768373
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin-sipe
 cp COPYING %{buildroot}/usr/share/package-licenses/pidgin-sipe/COPYING
