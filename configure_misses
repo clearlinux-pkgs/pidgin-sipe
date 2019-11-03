@@ -1,9 +1,11 @@
 Configure miss: dummy usability
 Configure miss: dummy presence
 Configure miss: dummy
-Configure miss: x86_64-generic-linux-gnu-ranlib usability
-Configure miss: x86_64-generic-linux-gnu-ranlib presence
+Configure miss: perl usability
+Configure miss: perl presence
+Configure miss: perl
 Configure miss: dummy
+Configure miss: perl
 Configure miss: gssapi/gssapi_ntlmssp.h usability
 Configure miss: gssapi/gssapi_ntlmssp.h presence
 Configure miss: gssapi/gssapi_ntlmssp.h
