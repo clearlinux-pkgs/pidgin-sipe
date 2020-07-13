@@ -4,10 +4,10 @@
 #
 Name     : pidgin-sipe
 Version  : 1.25.0
-Release  : 23
+Release  : 24
 URL      : https://github.com/tieto/sipe/archive/1.25.0/sipe-1.25.0.tar.gz
 Source0  : https://github.com/tieto/sipe/archive/1.25.0/sipe-1.25.0.tar.gz
-Summary  : Third-party Pidgin plugin for Microsoft Office 365/Lync/LCS/OCS
+Summary  : Pidgin protocol plugin to connect to MS Office Communicator
 Group    : Development/Tools
 License  : GPL-2.0 GPL-2.0+
 Requires: pidgin-sipe-data = %{version}-%{release}
@@ -97,21 +97,21 @@ locales components for the pidgin-sipe package.
 
 %prep
 %setup -q -n sipe-1.25.0
+cd %{_builddir}/sipe-1.25.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1572805789
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1594620421
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %autogen --disable-static --disable-telepathy --enable-purple --with-krb5 --with-vv --with-dbus
 make  %{?_smp_mflags}
@@ -124,7 +124,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1572805789
+export SOURCE_DATE_EPOCH=1594620421
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pidgin-sipe
 cp %{_builddir}/sipe-1.25.0/COPYING %{buildroot}/usr/share/package-licenses/pidgin-sipe/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
