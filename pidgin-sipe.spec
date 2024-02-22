@@ -4,7 +4,7 @@
 #
 Name     : pidgin-sipe
 Version  : 1.25.0
-Release  : 29
+Release  : 30
 URL      : https://github.com/tieto/sipe/archive/1.25.0/sipe-1.25.0.tar.gz
 Source0  : https://github.com/tieto/sipe/archive/1.25.0/sipe-1.25.0.tar.gz
 Summary  : Pidgin protocol plugin to connect to MS Office Communicator
